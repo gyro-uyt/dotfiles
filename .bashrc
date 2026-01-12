@@ -33,18 +33,6 @@ alias ...='cd ../..'
 alias update='sudo pacman -Syu'
 alias cls='clear'
 
-# -----------------------------------------------------------
-#  DELETED SECTION:
-#  I removed all your manual functions:
-#  - git_branch()
-#  - python_venv()
-#  - node_version()
-#  - exit_icon()
-#  - __prompt_command()
-#
-#  Starship will now handle all of this.
-# -----------------------------------------------------------
-
 #### --- TERMINAL SETTINGS --- ####
 export TERM=xterm-256color
 
