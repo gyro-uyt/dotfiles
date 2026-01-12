@@ -1,0 +1,146 @@
+/* -----------------------------------------------------------------------------
+ * TOKYO NIGHT MINIMAL THEME
+ * ----------------------------------------------------------------------------- */
+
+@define-color bg #1a1b26;
+@define-color fg #c0caf5;
+@define-color accent-blue #7aa2f7;
+@define-color accent-cyan #7dcfff;
+@define-color accent-purple #bb9af7;
+@define-color accent-pink #f7768e;
+@define-color accent-green #9ece6a;
+@define-color accent-orange #ff9e64;
+@define-color comment #565f89;
+
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "JetBrainsMono Nerd Font", "Roboto", sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    min-height: 0;
+}
+
+window#waybar {
+    background: transparent;
+}
+
+window#waybar.hidden {
+    opacity: 0.2;
+}
+
+.modules-left, .modules-center, .modules-right {
+    background: @bg;
+    border: 1px solid @comment;
+    border-radius: 25px;
+    padding: 6px 15px;
+    margin: 0;
+}
+
+/* WORKSPACES */
+#workspaces button {
+    color: @comment;
+    background: transparent;
+    padding: 0 5px;
+    margin: 0 2px;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    min-width: 20px;
+}
+
+#workspaces button:hover {
+    color: @accent-cyan;
+    background: rgba(122, 162, 247, 0.1);
+}
+
+#workspaces button.focused,
+#workspaces button.active {
+    color: @accent-blue;
+    padding-left: 10px;
+    padding-right: 10px;
+    background: rgba(122, 162, 247, 0.15);
+}
+
+#workspaces button.urgent {
+    color: @accent-pink;
+}
+
+/* MODULES */
+
+#clock {
+    color: @accent-purple;
+    margin: 0 10px;
+}
+
+#battery {
+    color: @accent-green;
+    margin: 0 10px;
+}
+
+#battery.warning {
+    color: @accent-orange;
+}
+
+#battery.critical {
+    color: @accent-pink;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#network {
+    color: @accent-purple;
+    margin: 0 10px;
+}
+
+#pulseaudio {
+    color: @accent-cyan;
+    margin: 0 10px;
+}
+
+#pulseaudio.muted {
+    color: @comment;
+}
+
+#bluetooth {
+    color: #7dcfff; /* Cyan/Light Blue */
+    margin: 0 10px;
+}
+
+#bluetooth.connected {
+    color: #7aa2f7; /* Darker Blue when connected */
+}
+
+#bluetooth.off {
+    color: #565f89; /* Greyed out when off */
+}
+
+#custom-clipboard {
+    color: @accent-blue;
+    margin: 0 10px;
+    padding-right: 5px;
+}
+
+#custom-power {
+    color: @accent-pink;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+tooltip {
+    background: @bg;
+    border: 1px solid @accent-blue;
+    border-radius: 10px;
+}
+
+tooltip label {
+    color: @fg;
+}
+
+@keyframes blink {
+    to {
+        color: @fg;
+    }
+}

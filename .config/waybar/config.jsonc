@@ -1,0 +1,98 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 38,
+    "spacing": 4,
+    "margin-top": 5,
+    "margin-bottom": -14,
+    "margin-left": 20,
+    "margin-right": 20,
+    
+    // Module Ordering
+    "modules-left": ["hyprland/workspaces", "sway/workspaces"],
+    "modules-center": ["clock"],
+    "modules-right": ["pulseaudio", "bluetooth", "network", "battery", "custom/clipboard", "custom/power"],
+
+    // Workspaces
+    "hyprland/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": true,
+        "format": "{name}", 
+        "on-click": "activate"
+    },
+    
+    "sway/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": true,
+        "format": "{name}"
+    },
+    
+    "clock": {
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format-alt": "{:%Y-%m-%d}",
+        "format": "{:%I:%M %p}"
+    },
+
+    "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{capacity}% {icon}",
+        "format-charging": "{capacity}% ",
+        "format-plugged": "{capacity}% ",
+        "format-icons": ["", "", "", "", ""]
+    },
+
+    "network": {
+        "format-wifi": "{essid} ",
+        "format-ethernet": "Ethernet ",
+	"on-click":"nm-connection-editor",
+        "tooltip-format": "{ifname} via {gwaddr} \nSignal: {signalStrength}%",
+        "format-linked": "{ifname} (No IP) ",
+        "format-disconnected": "Disconnected ⚠",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+    },
+
+    "pulseaudio": {
+        "format": "{volume}% {icon}",
+        "format-bluetooth": "{volume}% {icon}",
+        "format-bluetooth-muted": " {icon}",
+        "format-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+        "on-click": "pavucontrol"
+    },
+    "bluetooth": {
+        "format": " {status}",
+        "format-connected": " {device_alias}",
+        "format-connected-battery": " {device_alias} {device_battery_percentage}%",
+        // Tooltip shows detailed info
+        "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+        "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+        "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+        // click to open bluetooth manager (requires blueman installed)
+        "on-click": "blueman-manager" 
+    },
+
+    // CLIPBOARD MODULE (ROFI VERSION)
+    "custom/clipboard": {
+        "format": "",
+        // This command pipes history into rofi, then copies the selection back
+        "on-click": "cliphist list | rofi -dmenu -p 'Clipboard' | cliphist decode | wl-copy",
+        "tooltip": false
+    },
+    
+    "custom/power": {
+        "format": "⏻ ",
+        "on-click": "wlogout",
+        "tooltip": false
+    }
+}
