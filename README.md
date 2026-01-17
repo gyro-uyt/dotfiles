@@ -4,27 +4,9 @@ Greetings, fellow traveler of the command line. Welcome to my personal collectio
 
 > **Note:** These dotfiles are tailored to my personal workflow and setup. Feel free to explore, get inspired, and adapt them to your own needs.
 
-## Neofetch
+## A Glimpse into the Void
 
-```
-                     ./o.
-                   ./sssso-
-                 `:osssssss+-
-               `:+sssssssssso/.                     USER: gyro@zeppeli
-             `-/ossssssssssssso/.          ┌───────────────────────────────┐
-           `-/+sssssssssssssssso+:`        ​ ​ OS: EndeavourOS Linux x86_64
-         `-:/+sssssssssssssssssso+/.       ​ ​ Host: Final Boss
-       `.://osssssssssssssssssssso++-      ​ ​ Kernel: 6.18.4-arch1-1
-      .://+ssssssssssssssssssssssso++:     ​ ​ Uptime: 8 hours, 34 mins
-    .:///ossssssssssssssssssssssssso++:    ​ ​ Packages: 1690 (pacman), 13 (flatpak)
-  `:////ssssssssssssssssssssssssssso+++.   ​ ​ Shell: bash 5.3.9
-`-////+ssssssssssssssssssssssssssso++++-   ​ ​ DE: Hyprland
- `..-+oosssssssssssssssssssssssso+++++/`   ​ ​ WM: sway
-   ./++++++++++++++++++++++++++++++/:.     ​ ​ Memory: 7854MiB / 15687MiB
-  `:::::::::::::::::::::::::------``       └───────────────────────────────┘
-
-                                                    ⬤ ⬤ ⬤ ⬤ ⬤ ⬤ ⬤ ⬤
-```
+![Desktop Screenshot](assets/image.png)
 
 ## The Setup
 
@@ -37,34 +19,61 @@ This configuration is built around a lightweight and modern set of tools, primar
 - **Prompt**: [Starship](https://starship.rs/)
 - **Fetch**: [Fastfetch](https://github.com/fastfetch-cli/fastfetch)
 - **Launcher**: [Rofi](https://github.com/davatorium/rofi)
-- **Bar**: [Waybar](https://github.com/Alexays/Waybar)
+- **Bar**: [Waybar](https://github.com/Alexays/Waybar) (*Note: The styling is configured for a 1920x1080 resolution.*)
 - **Editor**: [Vim](https://www.vim.org/)
 
-## A Glimpse into the Void
+## Dependencies
 
-![Desktop Screenshot](assets/image.png)
+To use these dotfiles, you'll need to have the following packages installed.
+
+**Core Components:**
+```bash
+sudo pacman -S hyprland kitty fish starship fastfetch rofi waybar vim
+```
+
+**Helper Utilities:**
+These are required for features like notifications, clipboard management, screenshots, and media control.
+```bash
+sudo pacman -S swww swaync wl-paste cliphist dolphin grim slurp swappy wireplumber pipewire brightnessctl playerctl
+```
+
+## Fonts
+
+The visual consistency of this setup depends on a few specific fonts.
+- **`FantasqueSansM Nerd Font Mono`** (for the terminal)
+- **`JetBrainsMono Nerd Font`** (for UI elements like Rofi and Waybar)
+- **`Roboto`** (as a fallback font)
+
+You can typically find these in the Arch User Repository (AUR). For example, using an AUR helper like `yay`:
+```bash
+yay -S ttf-fantasque-sans-mono-nerd ttf-jetbrains-mono-nerd ttf-roboto
+```
 
 ## Installation
 
 These dotfiles can be managed in various ways. A common method is using a bare git repository.
 
-1.  Clone the repository:
-    `bash
-git clone --bare https://github.com/username/repo.git $HOME/.dotfiles
-    `
-2.  Define an alias for interacting with the dotfiles repository. Add this to your `.bashrc` or `.zshrc`:
-    `bash
-alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-    `
+1.  Clone the repository :
+    ```bash
+    git clone --bare https://github.com/gyro-uyt/dotfiles.git $HOME/.dotfiles
+    ```
+2.  Define an alias for interacting with the dotfiles repository. Add this to your `.bashrc` or `.config/fish/config.fish`:
+    ```bash
+    # For Bash
+    alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+
+    # For Fish
+    alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+    ```
 3.  Checkout the content:
-    `bash
-config checkout
-    `
+    ```bash
+    config checkout
+    ```
     _Note: If you have existing dotfiles, this might fail. You can back them up and remove them, then run the command again._
 4.  Set the `showUntrackedFiles` option to `no`:
-    `bash
-config config --local status.showUntrackedFiles no
-    `
+    ```bash
+    config config --local status.showUntrackedFiles no
+    ```
 
 ---
 
